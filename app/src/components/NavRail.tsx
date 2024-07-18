@@ -1,6 +1,6 @@
 import { ActionIcon, Divider, Paper, Stack, Tooltip } from "@mantine/core";
 import NavRailLink from "./NavRailLink.tsx";
-import { IconChartCircles, IconLogin, IconLogout } from "@tabler/icons-react";
+import {IconChartCircles, IconLogin, IconLogout, IconZoomQuestion} from "@tabler/icons-react";
 import { User } from "@supabase/supabase-js";
 import { supabase } from "../supabaseClient.ts";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ function NavRail({ user, setUser }: NavRailProps) {
 
   const links = [
     { label: "Compare", icon: <IconChartCircles />, link: "/" },
+    { label: "Request", icon: <IconZoomQuestion />, link: "/request" },
     // {
     //   label: "Tags",
     //   icon: <IconTag />,

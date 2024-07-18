@@ -15,8 +15,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "./supabaseClient.ts";
 import { PostgrestError } from "@supabase/supabase-js";
-import Tagging from "./pages/Tagging.tsx";
-import TablePage from "./pages/TablePage.tsx";
+import RequestPage from "./pages/Request.tsx";
 
 export type Concept = {
   avg_occurrence: number;
@@ -31,7 +30,7 @@ export type Concept = {
 export type Category = {
   value: string;
   label: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   color: string;
 };
 
@@ -108,15 +107,16 @@ const router = createBrowserRouter([
       },
       { path: "domain/:id", element: <div>Domain</div> },
       { path: "compare", element: <Compare /> },
-      { path: "tags", element: <Tagging /> },
-      { path: "concepts", element: <div>Concepts</div> },
-      { path: "table", element: <TablePage /> },
+      { path: "request", element: <RequestPage /> },
+      // { path: "tags", element: <Tagging /> },
+      // { path: "concepts", element: <div>Concepts</div> },
+      // { path: "table", element: <TablePage /> },
       // { path: "tags", element: <Tags /> },
     ],
   },
 ]);
 
-// @ts-ignore
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MantineProvider theme={myTheme} withGlobalStyles withNormalizeCSS>
