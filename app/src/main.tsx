@@ -16,6 +16,8 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "./supabaseClient.ts";
 import { PostgrestError } from "@supabase/supabase-js";
 import RequestPage from "./pages/Request.tsx";
+import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
 
 export type Concept = {
   avg_occurrence: number;
@@ -116,12 +118,20 @@ const router = createBrowserRouter([
   },
 ]);
 
+posthog.init(
+    'phc_NMGxeKxm4yywbzKJHsdym8pkobZFpNeM4TQTxoFjVJd',
+    {
+      api_host: 'https://us.i.posthog.com',
+    }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MantineProvider theme={myTheme} withGlobalStyles withNormalizeCSS>
-      <CustomFonts />
-      <RouterProvider router={router} />
-    </MantineProvider>
+    <PostHogProvider>
+      <MantineProvider theme={myTheme} withGlobalStyles withNormalizeCSS>
+        <CustomFonts />
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </PostHogProvider>
   </React.StrictMode>,
 );
